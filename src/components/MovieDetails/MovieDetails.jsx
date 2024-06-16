@@ -74,7 +74,7 @@ function MovieDetails() {
 
 
   return (
-    <div>
+    <div className="MovieDetails">
       <h1>Movie Details</h1>
       <div>
         <h3>{getMovie.title}</h3>

@@ -1,4 +1,51 @@
 .movies {
-    display : flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h1:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.movies div {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, opacity 0.3s;
+  cursor: pointer;
+  text-align: center;
+  max-width: 200px;
+}
+
+.movies div:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+h1 {
+  color: #d3c6c6;
+  font-size: 2em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+h3 {
+  color: #d3c6c6;
+  font-size: 1.2em;
+  transition: transform 0.3s, opacity 0.3s;
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.movies img {
+  max-width: 100%;
+  border-radius: 20px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.movies img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }

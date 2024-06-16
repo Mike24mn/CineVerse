@@ -1,3 +1,24 @@
 .App {
   text-align: center;
+  background: 
+    linear-gradient(to right, #745056, #de9a72),
+    url('/public/images/indoor-brick-wall-texture.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+  opacity: 0.9;
+  padding: 20px; /* Added a little padding to container */
+}
+
+/* Style for text */
+.App h1 {
+  color: #d3c6c6; /* White text color to pop on reddish texture background */
+  font-size: 2em; /* Larger font size */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: transform 0.3s, opacity 0.3s; /* transition for transform and opacity, basically sets time for how transition effect will happen/how long it will occur and time that opacity activates */
+}
+
+/* Hover effect for text */
+.App h1:hover {
+  transform: scale(1.1); /* Increase size by 10% */
+  opacity: 0.8; 
 }
