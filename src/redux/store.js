@@ -29,7 +29,7 @@ function* fetchAllMovies() {
 function* fetchAllGenres() {
   try {
     // Get the genres:
-    const genresResponse = yield axios.get('/api/moviesGenre');
+    const genresResponse = yield axios.get('/api/genres');
     // Set the value of the genres reducer:
     yield put({
       type: 'SET_GENRES',
