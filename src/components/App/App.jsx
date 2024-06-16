@@ -16,7 +16,7 @@ function App() {
         <Route path="/MovieDetails/:id" exact component={MovieDetails}>
           <MovieDetails />
           <li>
-            <Link to="/">Back</Link>
+            <Link to="/" data-testid="toList">Back</Link>
           </li>
         </Route>
         {/* Details page */}

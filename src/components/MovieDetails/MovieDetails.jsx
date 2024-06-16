@@ -76,7 +76,7 @@ function MovieDetails() {
   return (
     <div className="MovieDetails">
       <h1>Movie Details</h1>
-      <div>
+      <div data-testid="movieDetails">
         <h3>{getMovie.title}</h3>
         <img src={getMovie.poster} alt={getMovie.title} />
         <h4>{getMovie.description}</h4>
