@@ -29,7 +29,7 @@ function* fetchAllMovies() {
 function* fetchAllGenres() {
   try {
     // Get the genres:
-    const genresResponse = yield axios.get('/api/genres');
+    const genresResponse = yield axios.get('/api/moviesGenre');
     // Set the value of the genres reducer:
     yield put({
       type: 'SET_GENRES',
@@ -47,6 +47,7 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
+      console.log("sending movies payload yo:", action.payload);
       return action.payload;
     default:
       return state;
@@ -57,6 +58,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRES':
+      console.log("sending genres payload yo:", action.payload);
       return action.payload;
     default:
       return state;

@@ -17,6 +17,26 @@ router.get('/', (req, res) => {
     })
 
 });
+// get by specific id route
+router.get('/:id', (req, res) => {
+  const movieId = req.params.id;
+  const query = `
+    SELECT * FROM "movies"
+    WHERE "id" = $1;
+  `;
+  pool.query(query, [movieId])
+    .then(result => {
+      if (result.rows.length === 0) {
+        res.sendStatus(404); // Movie not found yo
+      } else {
+        res.send(result.rows[0]);
+      }
+    })
+    .catch(err => {
+      console.log('ERROR: Get movie by ID', err);
+      res.sendStatus(500);
+    });
+});
 
 router.post('/', (req, res) => {
   console.log(req.body);

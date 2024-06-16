@@ -9,7 +9,8 @@ import axios from "axios";
 function MovieDetails() {
 
   const dispatch = useDispatch();
-  const [getMovie, setMovie] = useState(null)
+  const [getMovie, setMovie] = useState([])
+  const [getGenre, setGenre] = useState([])
   const {id} = useParams() // destructure id
 
 
@@ -27,30 +28,34 @@ function MovieDetails() {
     const fetchMovie = async () => {
       try {
         const getResponse = await axios.get(`/api/movies/${id}`)
-        setMovie(response.data)
+        setMovie(getResponse.data)
+        console.log("Movie data set is: ", getResponse.data);
+        const genreRespone = await axios.get(`/api/genres/${id}`)
+        setGenre(genreRespone.data)
+        console.log("Genre data set is: ", genreRespone.data);
       }
       catch (error) {
         console.log("Error getting the movie", error);
       }
       }
       fetchMovie();
-  }, [id, dispatch]);
+  }, [id]);
+
 
   return (
     <div>
-      <h1>Movies</h1>
-      {movies.map(movie => {
-          return (
-            <div key={movie.id}>
-              <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title}/>
-            </div>
-          );
-        })}
-      <h1>Genres</h1>
-      {genreList.map(genre => (
-        <div key={genre.id}>{genre.name}</div>
-      ))}
+      <h1>Movie Details</h1>
+      <div>
+        <h3>{getMovie.title}</h3>
+        <img src={getMovie.poster} alt={getMovie.title} />
+        <h4>{getMovie.description}</h4>
+      </div>
+      <h2>Genres:</h2>
+      <ul>
+        {getGenre.map((genre) => (
+          <li key={genre.id}>{genre.genre_id.name}</li>
+          ))}
+      </ul>
     </div>
   );
 };
