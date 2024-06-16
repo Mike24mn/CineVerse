@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MovieDetails.css";
 import App from "../App/App";
 import MovieList from "../MovieList/MovieList";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 function MovieDetails() {
 
   const dispatch = useDispatch();
-
+  const [getMovie, setMovie] = useState(null)
   const {id} = useParams() // destructure id
 
 
@@ -22,9 +23,18 @@ function MovieDetails() {
 
   // need to change everything below here:
   useEffect(() => {
-    dispatch({ type: "FETCH_MOVIES" });
     dispatch({ type: "FETCH_GENRES" });
-  }, []);
+    const fetchMovie = async () => {
+      try {
+        const getResponse = await axios.get(`/api/movies/${id}`)
+        setMovie(response.data)
+      }
+      catch (error) {
+        console.log("Error getting the movie", error);
+      }
+      }
+      fetchMovie();
+  }, [id, dispatch]);
 
   return (
     <div>

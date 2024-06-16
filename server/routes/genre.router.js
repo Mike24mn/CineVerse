@@ -16,7 +16,6 @@ pool.query(query)
     res.sendStatus(500)
   })
   // Add query to get all genres
-  res.sendStatus(500)
 });
 
 module.exports = router;
